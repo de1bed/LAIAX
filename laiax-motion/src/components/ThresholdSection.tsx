@@ -60,9 +60,12 @@ export default function ThresholdSection() {
               Manifiesto <ArrowRight size={16} />
             </a>
             <a href="#region" className="liquid-glass rounded-full px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white">
-              La región
+              Territorio
             </a>
           </div>
+          <p className="mt-8 max-w-xl border-t border-white/15 pt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-white/40">
+            Video membrana · <span className="text-[#3DFFA8]">membrane-vertical-loop.mp4</span> <span className="text-[#3DFFA8]">.webm</span>
+          </p>
         </motion.div>
       </div>
     </section>

@@ -4,10 +4,12 @@
  */
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
+import WorldCoreSection from "./components/WorldCoreSection";
 import ThresholdSection from "./components/ThresholdSection";
 import FeaturedVideoSection from "./components/FeaturedVideoSection";
 import PhilosophySection from "./components/PhilosophySection";
 import RegionSection from "./components/RegionSection";
+import DecisionEngineSection from "./components/DecisionEngineSection";
 import ServicesSection from "./components/ServicesSection";
 
 export default function App() {
@@ -15,10 +17,12 @@ export default function App() {
     <main className="bg-black text-white">
       <HeroSection />
       <AboutSection />
+      <WorldCoreSection />
       <ThresholdSection />
       <FeaturedVideoSection />
       <PhilosophySection />
       <RegionSection />
+      <DecisionEngineSection />
       <ServicesSection />
     </main>
   );

@@ -70,6 +70,9 @@ export default function RegionSection() {
               Enfoque
             </a>
           </div>
+          <p className="mt-8 max-w-xl border-t border-white/15 pt-5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-white/40">
+            Video terreno · <span className="text-[#3DFFA8]">latam-terrain-loop.mp4</span> <span className="text-[#3DFFA8]">.webm</span>
+          </p>
         </motion.div>
       </div>
     </section>

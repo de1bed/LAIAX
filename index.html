@@ -145,12 +145,14 @@ body[data-surface="paper"] .nav::before{
 }
 .nav__cta:hover{background:var(--nav-fg);color:var(--ink);border-color:var(--nav-fg)}
 body[data-surface="paper"] .nav__cta:hover{color:var(--paper)}
+@media(min-width:841px) and (max-width:1100px){
+  .nav__links{display:flex;flex-wrap:wrap;justify-content:flex-end;max-width:52vw;gap:clamp(10px,1.8vw,20px)}
+  .nav__links .nav__link:nth-child(n+6){display:none}
+}
 @media(max-width:840px){
   .nav__links{display:none}
   .nav{padding:14px var(--gutter)}
 }
-
-/* ============== PAGE ROUTING ============== */
 .app{min-height:100vh;display:flex;flex-direction:column;background:var(--ink);transition:background .4s ease}
 body[data-surface="paper"] .app{background:var(--paper)}
 .page{display:none;animation:pageIn .5s cubic-bezier(.2,.8,.2,1)}
@@ -325,9 +327,10 @@ body[data-surface="paper"] .app{background:var(--paper)}
   position:relative;overflow:hidden;
   background:var(--void);
   color:var(--paper);
-  padding:clamp(72px,11vw,140px) 0;
+  padding:clamp(80px,12vw,148px) 0;
   border-top:1px solid rgba(42,42,46,.6);
   border-bottom:1px solid rgba(42,42,46,.6);
+  scroll-margin-top:clamp(72px,12vh,104px);
 }
 .shimmer-sec::before{
   content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
@@ -351,6 +354,39 @@ body[data-surface="paper"] .app{background:var(--paper)}
   .shimmer-sec__grid--reverse .shimmer-sec__visual{order:1}
   .shimmer-sec__grid--reverse .shimmer-sec__copy{order:2}
 }
+.shimmer-flagship{
+  position:relative;overflow:hidden;
+  padding:clamp(88px,13vw,168px) 0 clamp(80px,12vw,128px);
+  background:
+    radial-gradient(ellipse 100% 80% at 50% -20%, rgba(0,210,122,.07), transparent 45%),
+    linear-gradient(180deg, var(--ink) 0%, var(--void) 35%, var(--ink-2) 100%);
+  border-top:1px solid rgba(42,42,46,.65);
+  scroll-margin-top:clamp(72px,12vh,104px);
+}
+.shimmer-flagship__grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(36px,6vw,72px);
+  align-items:center;
+}
+@media(max-width:980px){.shimmer-flagship__grid{grid-template-columns:1fr}}
+.shimmer-flagship__copy .sec__num{margin-bottom:clamp(14px,2vw,20px)}
+.shimmer-flagship__copy .sec__title{
+  font-size:clamp(30px,4.8vw,58px);line-height:1.04;letter-spacing:-0.03em;margin-bottom:clamp(18px,2.5vw,28px);
+}
+.shimmer-flagship__copy .sec__title em{font-style:italic;color:var(--accent-glow);font-weight:var(--fw-light)}
+.shimmer-flagship__lead{
+  font-size:clamp(16px,1.2vw,19px);line-height:1.65;color:var(--mute-2);max-width:52ch;margin:0 0 clamp(20px,3vw,32px);
+}
+.video-hook{
+  margin-top:clamp(20px,3vw,28px);padding-top:18px;border-top:1px solid rgba(42,42,46,.8);
+  font-family:var(--label);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+  line-height:1.65;max-width:56ch;
+}
+.video-hook code{
+  font-family:ui-monospace,monospace;font-size:11px;font-weight:400;
+  letter-spacing:0;color:var(--accent-glow);opacity:.85;
+}
+
 .shimmer-frame{
   position:relative;border-radius:clamp(20px,3vw,32px);overflow:hidden;
   box-shadow:
@@ -362,6 +398,9 @@ body[data-surface="paper"] .app{background:var(--paper)}
   -webkit-backdrop-filter:blur(8px);
   aspect-ratio:2/3;max-width:420px;margin:0 auto;width:100%;
 }
+.shimmer-frame--169{aspect-ratio:16/9;max-width:none;width:100%}
+.shimmer-flagship .shimmer-frame--169{margin:0}
+.shimmer-flagship .shimmer-img{object-position:center 45%}
 .shimmer-frame__shine{
   position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;
   background:linear-gradient(135deg, rgba(61,255,168,.12) 0%, transparent 42%, rgba(198,255,61,.08) 100%);
@@ -694,6 +733,9 @@ body[data-surface="paper"] .app{background:var(--paper)}
     <span>LAIAX</span>
   </a>
   <div class="nav__links">
+    <a class="nav__link nav__link--home" href="#home" data-route="home">Home</a>
+    <a class="nav__link nav__link--anchor" href="#world-core" data-home-anchor="world-core">Red global</a>
+    <a class="nav__link nav__link--anchor" href="#decision-engine" data-home-anchor="decision-engine">Motor</a>
     <a class="nav__link" href="#instituto" data-route="instituto">Instituto</a>
     <a class="nav__link" href="#made" data-route="made">MADE</a>
     <a class="nav__link" href="#manifiesto" data-route="manifiesto">Manifiesto</a>
@@ -749,6 +791,7 @@ body[data-surface="paper"] .app{background:var(--paper)}
       <div class="hero__cta" style="justify-content:center;margin-top:8px">
         <a href="#made" data-route="made" class="btn btn--primary">Conocer MADE <span class="arrow">→</span></a>
         <a href="#manifiesto" data-route="manifiesto" class="btn btn--ghost">Manifiesto</a>
+        <a href="#world-core" class="btn btn--ghost">Red global</a>
         <a href="#threshold" class="btn btn--ghost">Umbral</a>
       </div>
     </div>
@@ -800,6 +843,43 @@ body[data-surface="paper"] .app{background:var(--paper)}
     </div>
   </section>
 
+  <!-- Flagship: LATAM × sistema global (world core) -->
+  <section class="shimmer-flagship" id="world-core" aria-labelledby="world-core-title">
+    <div class="wrap">
+      <div class="shimmer-flagship__grid">
+        <div class="shimmer-flagship__copy reveal">
+          <p class="sec__num">00 · Instituto distribuido</p>
+          <h2 id="world-core-title" class="sec__title">Latinoamérica entra al <em>sistema operativo</em> del futuro.</h2>
+          <p class="shimmer-flagship__lead">
+            El instituto funciona donde se toman decisiones: una red ejecutiva concentrada en la región, con hilos densos hacia EU y Asia. MADE no es contenido gravado desde lejos — es infraestructura que alinea empresa, tecnología exponencial y criterio de dirección.
+          </p>
+          <div class="shimmer-sec__actions">
+            <a href="#decision-engine" class="btn btn--primary">Ver el motor <span class="arrow">→</span></a>
+            <a href="#region" class="btn btn--ghost">Territorio</a>
+          </div>
+          <div class="video-hook">
+            Video ciclo mundo / red&nbsp;&nbsp;<code>world-core-loop.mp4</code>&nbsp;<code>world-core-loop.webm</code>
+          </div>
+        </div>
+        <div class="shimmer-sec__visual reveal">
+          <div class="shimmer-frame shimmer-frame--169">
+            <div class="shimmer-frame__shine" aria-hidden="true"></div>
+            <img
+              class="shimmer-img"
+              src="assets/generated/laiax_shimmer_world_core.webp"
+              alt=""
+              width="1920"
+              height="1080"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Shimmer: Umbral / transformación -->
   <section class="shimmer-sec" id="threshold" aria-labelledby="threshold-title">
     <div class="wrap">
@@ -824,6 +904,9 @@ body[data-surface="paper"] .app{background:var(--paper)}
           <div class="shimmer-sec__actions">
             <a href="#manifiesto" data-route="manifiesto" class="btn btn--primary">Leer manifiesto <span class="arrow">→</span></a>
             <a href="#region" class="btn btn--ghost">La región</a>
+          </div>
+          <div class="video-hook">
+            Membrana ciclo&nbsp;&nbsp;<code>membrane-vertical-loop.mp4</code>&nbsp;<code>.webm</code>
           </div>
         </div>
       </div>
@@ -854,6 +937,39 @@ body[data-surface="paper"] .app{background:var(--paper)}
           <div class="shimmer-sec__actions">
             <a href="#made" data-route="made" class="btn btn--primary">Ver itinerario MADE <span class="arrow">→</span></a>
             <a href="#aplicar" data-route="aplicar" class="btn btn--ghost">Cohorte 01</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decision engine — velocidad de decisión / método -->
+  <section class="shimmer-sec shimmer-sec--latam" id="decision-engine" aria-labelledby="decision-engine-title">
+    <div class="wrap">
+      <div class="shimmer-sec__grid">
+        <div class="shimmer-sec__visual reveal">
+          <div class="shimmer-frame">
+            <div class="shimmer-frame__shine" aria-hidden="true"></div>
+            <img class="shimmer-img" src="assets/generated/laiax_shimmer_decision_engine.webp" alt="" width="800" height="1200" loading="lazy" decoding="async"/>
+          </div>
+        </div>
+        <div class="shimmer-sec__copy reveal">
+          <p class="sec__num">03 · Velocidad de decisión</p>
+          <h2 id="decision-engine-title" class="sec__title"><em>Un motor</em>. No improvisación ejecutiva ni otro playbook genérico.</h2>
+          <p class="shimmer-sec__body">
+            MADE condensa tiempo de evaluación: señales, tutores IA por materia, mentores en activo en cadencia con la empresa. El instituto existe para cerrar brecha entre leer sobre IA y ejecutar donde importa — capital humano, producto y operaciones.
+          </p>
+          <ul class="shimmer-sec__list">
+            <li>Loops cortos de diagnóstico → prueba → ajuste, al ritmo exponencial.</li>
+            <li>Coherencia de dirección cuando la tecnología sobrepasa a la organización.</li>
+            <li>Decisiones públicas ante cohorte: accountability que acelera el resto.</li>
+          </ul>
+          <div class="shimmer-sec__actions">
+            <a href="#aplicar" data-route="aplicar" class="btn btn--primary">Cohorte 01 <span class="arrow">→</span></a>
+            <a href="#world-core" class="btn btn--ghost">Red global</a>
+          </div>
+          <div class="video-hook">
+            Motor ciclo líquido / glass&nbsp;&nbsp;<code>decision-engine-loop.mp4</code>&nbsp;<code>.webm</code>
           </div>
         </div>
       </div>
@@ -1566,7 +1682,7 @@ body[data-surface="paper"] .app{background:var(--paper)}
     aplicar: 'LAIAX — Aplicar · Cohorte 01 abierta'
   };
 
-  const HOME_ANCHORS = new Set(['threshold','region']);
+  const HOME_ANCHORS = new Set(['threshold','region','world-core','decision-engine']);
 
   function parseHash(){
     const raw = (location.hash || '').replace(/^#/,'').trim().toLowerCase();
@@ -1589,17 +1705,33 @@ body[data-surface="paper"] .app{background:var(--paper)}
     el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   }
 
+  function applyNavHighlight(name, anchor){
+    const slug = (anchor && String(anchor)).replace(/[^\w\-]/g,'') || '';
+    const anchorForHome = name === 'home' && slug && HOME_ANCHORS.has(slug) ? slug : '';
+    document.querySelectorAll('[data-route]').forEach(a=>{
+      const r = a.dataset.route || '';
+      if(r === 'home'){
+        a.classList.toggle('is-active', name === 'home' && !anchorForHome);
+      }else{
+        a.classList.toggle('is-active', r === name);
+      }
+    });
+    document.querySelectorAll('[data-home-anchor]').forEach(a=>{
+      const m = (a.dataset.homeAnchor || '').replace(/[^\w\-]/g,'');
+      a.classList.toggle('is-active', name === 'home' && anchorForHome === m);
+    });
+  }
+
   function go(name, anchor){
     if(!PAGES.includes(name)) name = 'home';
+
     let activePage = null;
     document.querySelectorAll('.page').forEach(p=>{
       const isActive = p.dataset.page === name;
       p.classList.toggle('is-active', isActive);
       if(isActive) activePage = p;
     });
-    document.querySelectorAll('[data-route]').forEach(a=>{
-      a.classList.toggle('is-active', a.dataset.route === name);
-    });
+    applyNavHighlight(name, anchor||'');
     document.title = TITLES[name] || TITLES.home;
 
     const anchorId = (anchor && typeof anchor === 'string') ? anchor.replace(/[^\w\-]/g,'') : '';
@@ -1640,7 +1772,7 @@ body[data-surface="paper"] .app{background:var(--paper)}
     go(route, '');
   });
 
-  /* In-page anchors inside home (#threshold / #region) */
+  /* In-page anchors inside home (threshold, region, world-core, decision-engine) */
   document.addEventListener('click', e=>{
     const link = e.target.closest('a[href^="#"]');
     if(!link || link.hasAttribute('data-route')) return;
@@ -1656,6 +1788,7 @@ body[data-surface="paper"] .app{background:var(--paper)}
       if(location.hash.replace(/^#/,'') !== 'home/'+anchor){
         history.replaceState({page:'home',anchor}, '', '#home/'+anchor);
       }
+      applyNavHighlight('home', anchor);
       smoothScrollTo(el);
       return;
     }
