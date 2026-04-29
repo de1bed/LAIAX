@@ -4,8 +4,10 @@
  */
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
+import ThresholdSection from "./components/ThresholdSection";
 import FeaturedVideoSection from "./components/FeaturedVideoSection";
 import PhilosophySection from "./components/PhilosophySection";
+import RegionSection from "./components/RegionSection";
 import ServicesSection from "./components/ServicesSection";
 
 export default function App() {
@@ -13,8 +15,10 @@ export default function App() {
     <main className="bg-black text-white">
       <HeroSection />
       <AboutSection />
+      <ThresholdSection />
       <FeaturedVideoSection />
       <PhilosophySection />
+      <RegionSection />
       <ServicesSection />
     </main>
   );

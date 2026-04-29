@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#03050A">
 <title>LAIAX — Latin American Institute for AI & eXponential Organizations</title>
 <meta name="description" content="LAIAX. Plataforma de aceleración empresarial para la era exponencial. Primer producto: MADE — Maestría en Alta Dirección. 17 ciudades. 17 meses. Cohorte 01 abierta.">
+<link rel="preload" as="image" href="assets/generated/laiax_shimmer_velocity_portal.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@100;200;300;400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -42,6 +43,10 @@
   --accent-glow:var(--green-glow);
   --accent-rgb:var(--green-rgb);
   --accent-soft:rgba(0,210,122,.18);
+
+  /* Shimmer surface */
+  --void:#03050A;
+  --glass-tint:rgba(27,41,34,.35);
 
   /* Layout & type */
   --gutter:clamp(20px,4vw,72px);
@@ -197,6 +202,25 @@ body[data-surface="paper"] .app{background:var(--paper)}
 .hero--paper .hero__bg{background:radial-gradient(ellipse 140% 100% at 50% 100%, #FFFFFF 0%, var(--paper) 70%, var(--paper-warm) 100%)}
 .hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;transition:opacity .6s ease}
 .hero__video.is-hidden{opacity:0}
+.hero__poster{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center 42%;
+  opacity:.92;
+  transform:scale(1.02);
+  transition:transform 1.2s ease, opacity .6s ease;
+}
+.hero--shimmer .hero__poster{opacity:.88}
+.hero--shimmer .hero__beam{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 45%, transparent 18%, rgba(3,5,10,.5) 58%, rgba(3,5,10,.97) 100%),
+    linear-gradient(180deg, rgba(3,5,10,.75) 0%, transparent 22%, transparent 68%, rgba(10,10,11,.88) 100%);
+}
+.hero--shimmer .hero__mesh{z-index:2;opacity:.65}
+.hero--shimmer .hero__grid{z-index:3;opacity:.14}
+@media(prefers-reduced-motion:reduce){
+  .hero__poster{transform:none;transition:none}
+}
 .hero__mesh{
   position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:.85;
   background:
@@ -295,6 +319,121 @@ body[data-surface="paper"] .app{background:var(--paper)}
 .sec__sub{font-family:var(--body);font-size:clamp(16px,1.2vw,18px);line-height:1.55;color:#C8C8CC;max-width:60ch;margin-top:18px}
 .sec--paper .sec__sub{color:var(--ink-soft)}
 @media(max-width:780px){.sec__head{grid-template-columns:1fr}}
+
+/* ============== SHIMMER LANDING (generated art + glass) ============== */
+.shimmer-sec{
+  position:relative;overflow:hidden;
+  background:var(--void);
+  color:var(--paper);
+  padding:clamp(72px,11vw,140px) 0;
+  border-top:1px solid rgba(42,42,46,.6);
+  border-bottom:1px solid rgba(42,42,46,.6);
+}
+.shimmer-sec::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,210,122,.08), transparent 55%);
+}
+.shimmer-sec--latam{background:var(--ink-2)}
+.shimmer-sec--latam::before{
+  background:radial-gradient(ellipse 90% 70% at 80% 30%, rgba(198,255,61,.06), transparent 50%),
+    radial-gradient(ellipse 70% 50% at 10% 80%, rgba(0,210,122,.07), transparent 55%);
+}
+.shimmer-sec__grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:clamp(32px,6vw,80px);
+  align-items:center;
+}
+.shimmer-sec__grid--reverse{grid-template-columns:minmax(0,1.1fr) minmax(0,.95fr)}
+.shimmer-sec__grid--reverse .shimmer-sec__visual{order:2}
+.shimmer-sec__grid--reverse .shimmer-sec__copy{order:1}
+@media(max-width:960px){
+  .shimmer-sec__grid,.shimmer-sec__grid--reverse{grid-template-columns:1fr}
+  .shimmer-sec__grid--reverse .shimmer-sec__visual{order:1}
+  .shimmer-sec__grid--reverse .shimmer-sec__copy{order:2}
+}
+.shimmer-frame{
+  position:relative;border-radius:clamp(20px,3vw,32px);overflow:hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 24px 80px rgba(0,0,0,.55),
+    0 0 120px rgba(0,210,122,.12);
+  background:var(--glass-tint);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  aspect-ratio:2/3;max-width:420px;margin:0 auto;width:100%;
+}
+.shimmer-frame__shine{
+  position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;
+  background:linear-gradient(135deg, rgba(61,255,168,.12) 0%, transparent 42%, rgba(198,255,61,.08) 100%);
+  opacity:.9;
+}
+.shimmer-img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;transform:scale(1.01);
+  transition:transform 8s ease;
+}
+.shimmer-sec__visual.reveal.is-in .shimmer-img{transform:scale(1.04)}
+@media(prefers-reduced-motion:reduce){
+  .shimmer-img,.shimmer-sec__visual.reveal.is-in .shimmer-img{transform:none;transition:none}
+}
+.shimmer-sec__copy .sec__num{color:var(--mute);margin-bottom:16px}
+.shimmer-sec__copy .sec__title{
+  font-size:clamp(28px,4vw,52px);line-height:1.06;margin-bottom:20px;
+}
+.shimmer-sec__copy .sec__title em{font-style:italic;color:var(--accent-glow);font-weight:var(--fw-light);text-shadow:0 0 20px rgba(var(--green-rgb),.35)}
+.shimmer-sec__body{
+  font-size:clamp(16px,1.15vw,18px);line-height:1.65;color:var(--mute-2);max-width:52ch;margin:0 0 28px;
+}
+.shimmer-sec__list{
+  list-style:none;margin:0 0 28px;padding:0;display:flex;flex-direction:column;gap:12px;
+  font-size:15px;color:var(--mute-2);line-height:1.5;max-width:48ch;
+}
+.shimmer-sec__list li{
+  padding-left:22px;position:relative;
+}
+.shimmer-sec__list li::before{
+  content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:99px;
+  background:var(--green);box-shadow:0 0 12px var(--green-glow);
+}
+.shimmer-sec__actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* Hero Shimmer stack */
+.hero--shimmer{background:var(--void)}
+.hero--shimmer .hero__bg{background:var(--void)}
+.hero--shimmer .hero__main--shimmer{
+  position:relative;z-index:12;flex:1;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  justify-content:center;gap:clamp(20px,3vw,32px);
+  max-width:min(1040px,100%);margin-inline:auto;padding-top:clamp(12px,3vw,32px);
+}
+.hero__inst{
+  font-size:clamp(10px,.85vw,12px);letter-spacing:.2em;text-transform:uppercase;color:rgba(245,244,240,.5);
+  max-width:52ch;margin:0;
+}
+.hero__title--shimmer{
+  font-size:clamp(42px,9.2vw,118px);letter-spacing:.04em;text-transform:none;line-height:1;
+  max-width:16ch;
+}
+.hero__title--shimmer .hero__line{display:block}
+.hero__title--shimmer .hero__line em{
+  font-style:italic;font-weight:var(--fw-light);color:var(--green-glow);
+  text-shadow:0 0 28px rgba(var(--green-rgb),.45),0 0 80px rgba(var(--green-rgb),.2);
+}
+.hero__lead--hero{max-width:46ch;margin:0;color:rgba(200,200,204,.92);font-size:clamp(16px,1.25vw,19px)}
+.hero__chips{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;list-style:none;margin:0;padding:0;
+  font-family:var(--label);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+}
+.hero__chips li{
+  border:1px solid rgba(255,255,255,.12);background:rgba(10,10,11,.4);
+  padding:10px 16px;border-radius:999px;backdrop-filter:blur(6px);
+}
+.hero__chips li strong{color:var(--paper);font-weight:500}
+.hero--shimmer .hero__foot{
+  border-top-color:rgba(42,42,46,.85);
+  justify-content:center;gap:clamp(20px,4vw,56px);
+}
+.hero--shimmer .hero__foot > div:last-child{opacity:.75}
 
 /* ============== PAPER COMPONENT OVERRIDES ============== */
 .sec--paper .programs,
@@ -577,50 +716,47 @@ body[data-surface="paper"] .app{background:var(--paper)}
 <!-- ============================================================ -->
 <section class="page is-active" data-page="home">
 
-  <header class="hero hero--tall">
+  <header class="hero hero--tall hero--shimmer">
     <div class="hero__bg" aria-hidden="true">
-      <video class="hero__video" id="heroVideo" muted playsinline loop preload="metadata" autoplay poster="assets/hero-poster.webp">
-        <source src="assets/hero-loop.webm" type="video/webm"/>
-        <source src="assets/hero-loop.mp4" type="video/mp4"/>
-      </video>
+      <picture>
+        <img class="hero__poster" src="assets/generated/laiax_shimmer_velocity_portal.webp" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="hero__beam" aria-hidden="true"></div>
       <div class="hero__mesh"></div>
     </div>
-    <div class="hero__grid"></div>
+    <div class="hero__grid" aria-hidden="true"></div>
 
     <div class="hero__top">
       <div class="eyebrow"><strong>Instituto</strong> · LATAM × AI</div>
-      <div class="eyebrow">LAIAX — 2026</div>
+      <div class="eyebrow">v1.0 · Cohorte 01 · 2026</div>
     </div>
 
-    <div class="hero__main hero__main--split">
-      <div class="hero__col hero__col--l">
-        <h1 class="hero__title hero__title--xl">El instituto</h1>
-        <span class="hero__divider" aria-hidden="true"></span>
-        <ul class="hero__meta" aria-label="programas LAIAX">
-          <li><strong>01</strong>&nbsp;<span>MADE — Maestría · 17 ciudades · 17 meses</span></li>
-          <li><strong>02</strong>&nbsp;<span>Cohorte 01 abierta · 2026</span></li>
-          <li><strong>03</strong>&nbsp;<span>Aval CUT Laguna Universidad</span></li>
-        </ul>
-        <p class="hero__lead">
-          Latin American Institute for AI and eXponential Organizations. La plataforma de aceleración empresarial para la era exponencial: contenido en tiempo real, mentores en activo y tutores de IA por materia.
-        </p>
-      </div>
-      <div class="hero__col hero__col--r">
-        <h2 class="hero__title hero__title--lg">
-          <span class="line"><span class="soft">del</span></span>
-          <span class="line"><span class="accent-glow">presente.</span></span>
-        </h2>
-        <div class="hero__cta">
-          <a href="#made" data-route="made" class="btn btn--primary">Conocer MADE <span class="arrow">→</span></a>
-          <a href="#manifiesto" data-route="manifiesto" class="btn btn--ghost">Manifiesto</a>
-        </div>
+    <div class="hero__main hero__main--shimmer">
+      <p class="hero__inst">Latin American Institute for AI &amp; eXponential Organizations</p>
+      <h1 class="hero__title hero__title--shimmer">
+        <span class="hero__line">La ventaja del futuro</span>
+        <span class="hero__line">no es <em>información.</em></span>
+      </h1>
+      <p class="hero__lead hero__lead--hero">
+        Es <strong style="color:var(--paper);font-weight:500">velocidad de adaptación</strong>. LAIAX es la infraestructura institucional que acelera la adopción de tecnologías exponenciales en Latinoamérica. No una escuela. Un instituto.
+      </p>
+      <ul class="hero__chips" aria-label="Hechos clave">
+        <li><strong>17</strong> ciudades</li>
+        <li><strong>17</strong> meses</li>
+        <li><strong>MADE</strong> · maestría ejecutiva</li>
+        <li>CUT Laguna</li>
+      </ul>
+      <div class="hero__cta" style="justify-content:center;margin-top:8px">
+        <a href="#made" data-route="made" class="btn btn--primary">Conocer MADE <span class="arrow">→</span></a>
+        <a href="#manifiesto" data-route="manifiesto" class="btn btn--ghost">Manifiesto</a>
+        <a href="#threshold" class="btn btn--ghost">Umbral</a>
       </div>
     </div>
 
     <div class="hero__foot">
       <div><strong>17</strong>&nbsp;<span>ciudades</span></div>
       <div><strong>17</strong>&nbsp;<span>meses</span></div>
-      <div><strong>20K</strong>&nbsp;<span>USD inversión total</span></div>
+      <div><strong>∞</strong>&nbsp;<span>adopción</span></div>
       <div>↓ Scroll</div>
     </div>
   </header>
@@ -659,6 +795,66 @@ body[data-surface="paper"] .app{background:var(--paper)}
           </div>
           <p class="program__desc">Inmersión para fundadores latinoamericanos en ecosistemas tecnológicos de Estados Unidos. Pipeline de talento LATAM × USA.</p>
           <span class="program__link" style="color:var(--mute)">En desarrollo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shimmer: Umbral / transformación -->
+  <section class="shimmer-sec" id="threshold" aria-labelledby="threshold-title">
+    <div class="wrap">
+      <div class="shimmer-sec__grid shimmer-sec__grid--reverse">
+        <div class="shimmer-sec__visual reveal">
+          <div class="shimmer-frame">
+            <div class="shimmer-frame__shine" aria-hidden="true"></div>
+            <img class="shimmer-img" src="assets/generated/laiax_shimmer_membrane_vertical.webp" alt="" width="800" height="1200" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="shimmer-sec__copy reveal">
+          <p class="sec__num">01 · Umbral</p>
+          <h2 id="threshold-title" class="sec__title">Adopción exponencial atraviesa un <em>umbral</em>, no una curva suave.</h2>
+          <p class="shimmer-sec__body">
+            Latinoamérica no llega tarde por falta de talento operativo: llega tarde cuando la institución que traduce velocidad en decisiones ejecutivas no existe. LAIAX es ese cruce disciplinario: estrategia, criterio operativo y señales de lo que viene.
+          </p>
+          <ul class="shimmer-sec__list">
+            <li>Transformación como decisión institucional, no como buzzword.</li>
+            <li>IA aplicada donde importa el P&amp;L, no el experimento suelto.</li>
+            <li>Manifiesto y cohorte como compromiso público.</li>
+          </ul>
+          <div class="shimmer-sec__actions">
+            <a href="#manifiesto" data-route="manifiesto" class="btn btn--primary">Leer manifiesto <span class="arrow">→</span></a>
+            <a href="#region" class="btn btn--ghost">La región</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shimmer: Región — velocidad territorial -->
+  <section class="shimmer-sec shimmer-sec--latam" id="region" aria-labelledby="region-title">
+    <div class="wrap">
+      <div class="shimmer-sec__grid">
+        <div class="shimmer-sec__visual reveal">
+          <div class="shimmer-frame">
+            <div class="shimmer-frame__shine" aria-hidden="true"></div>
+            <img class="shimmer-img" src="assets/generated/laiax_latam_topographic_shimmer.webp" alt="" width="800" height="1200" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="shimmer-sec__copy reveal">
+          <p class="sec__num">02 · Territorio</p>
+          <h2 id="region-title" class="sec__title">El futuro de la región se <em>recorre</em>, no se debate desde la tribuna.</h2>
+          <p class="shimmer-sec__body">
+            Instituto distribuido, bilingüe, con pies en LATAM y señales en los ecosistemas donde la adopción se ensaya primero: velocidad territorial como ventaja cuando la empresa elige ejecutar antes que interpretar desde lejos.
+          </p>
+          <ul class="shimmer-sec__list">
+            <li>17 ciudades como capítulos de una misma tesis ejecutiva.</li>
+            <li>Red institucional, no formato de masas.</li>
+            <li>Pipeline MADE → iniciativas futuras (Labs, Fellowship).</li>
+          </ul>
+          <div class="shimmer-sec__actions">
+            <a href="#made" data-route="made" class="btn btn--primary">Ver itinerario MADE <span class="arrow">→</span></a>
+            <a href="#aplicar" data-route="aplicar" class="btn btn--ghost">Cohorte 01</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1369,10 +1565,31 @@ body[data-surface="paper"] .app{background:var(--paper)}
     manifiesto: 'LAIAX — Manifiesto · La velocidad es la ventaja',
     aplicar: 'LAIAX — Aplicar · Cohorte 01 abierta'
   };
-  const heroVid = document.getElementById('heroVideo');
 
-  const app = document.querySelector('.app');
-  function go(name){
+  const HOME_ANCHORS = new Set(['threshold','region']);
+
+  function parseHash(){
+    const raw = (location.hash || '').replace(/^#/,'').trim().toLowerCase();
+    if(!raw) return { page: 'home', anchor: '' };
+    if(raw.includes('/')){
+      const idx = raw.indexOf('/');
+      const p = raw.slice(0, idx);
+      const a = raw.slice(idx + 1);
+      if(PAGES.includes(p)) return { page: p, anchor: a.replace(/[^\w\-]/g,'') };
+      return { page: 'home', anchor: '' };
+    }
+    if(PAGES.includes(raw)) return { page: raw, anchor: '' };
+    if(HOME_ANCHORS.has(raw)) return { page: 'home', anchor: raw };
+    return { page: 'home', anchor: '' };
+  }
+
+  function smoothScrollTo(el){
+    if(!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  function go(name, anchor){
     if(!PAGES.includes(name)) name = 'home';
     let activePage = null;
     document.querySelectorAll('.page').forEach(p=>{
@@ -1384,26 +1601,31 @@ body[data-surface="paper"] .app{background:var(--paper)}
       a.classList.toggle('is-active', a.dataset.route === name);
     });
     document.title = TITLES[name] || TITLES.home;
-    window.scrollTo({top:0, behavior:'instant'});
-    /* Sync surface attribute on body so nav (sibling of .app) can react */
+
+    const anchorId = (anchor && typeof anchor === 'string') ? anchor.replace(/[^\w\-]/g,'') : '';
+    const anchorEl = anchorId ? document.getElementById(anchorId) : null;
+    const useHomeAnchor = name === 'home' && anchorEl;
+
+    if(!useHomeAnchor){
+      window.scrollTo({top:0, behavior:'instant'});
+    }
+
     const surface = activePage?.dataset.surface || 'dark';
     document.body.dataset.surface = surface;
-    /* Hero video only plays on home */
-    if(heroVid){
-      if(name === 'home'){ heroVid.play().catch(()=>{}); }
-      else { heroVid.pause(); }
-    }
-    /* Trigger reveal animations for the new active page */
+
     requestAnimationFrame(()=>{
       const active = document.querySelector('.page.is-active');
       if(!active) return;
       active.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      if(useHomeAnchor){
+        requestAnimationFrame(()=> smoothScrollTo(anchorEl));
+      }
     });
   }
 
   function fromHash(){
-    const h = (location.hash || '').replace('#','').trim().toLowerCase();
-    go(h || 'home');
+    const { page, anchor } = parseHash();
+    go(page, anchor);
   }
 
   /* Intercept clicks on data-route to keep things SPA-y and avoid double work */
@@ -1413,9 +1635,32 @@ body[data-surface="paper"] .app{background:var(--paper)}
     const route = a.dataset.route;
     if(!PAGES.includes(route)) return;
     e.preventDefault();
-    if('#'+route === location.hash){ go(route); return; }
+    if('#'+route === location.hash){ go(route, ''); return; }
     history.pushState({page:route}, '', '#'+route);
-    go(route);
+    go(route, '');
+  });
+
+  /* In-page anchors inside home (#threshold / #region) */
+  document.addEventListener('click', e=>{
+    const link = e.target.closest('a[href^="#"]');
+    if(!link || link.hasAttribute('data-route')) return;
+    const href = link.getAttribute('href');
+    if(!href || href.length < 2) return;
+    const anchor = href.slice(1).toLowerCase().replace(/[^\w\-]/g,'');
+    if(!HOME_ANCHORS.has(anchor)) return;
+    const onHome = document.querySelector('.page.is-active[data-page="home"]');
+    const el = document.getElementById(anchor);
+    if(!el) return;
+    e.preventDefault();
+    if(onHome){
+      if(location.hash.replace(/^#/,'') !== 'home/'+anchor){
+        history.replaceState({page:'home',anchor}, '', '#home/'+anchor);
+      }
+      smoothScrollTo(el);
+      return;
+    }
+    history.pushState({page:'home',anchor}, '', '#home/'+anchor);
+    go('home', anchor);
   });
 
   window.addEventListener('hashchange', fromHash);
@@ -1438,16 +1683,6 @@ body[data-surface="paper"] .app{background:var(--paper)}
     document.querySelectorAll('.page.is-active .reveal').forEach(el => observer.observe(el));
     fromHash();
   });
-
-  /* Pause hero video off-screen (within home) */
-  if(heroVid && 'IntersectionObserver' in window){
-    new IntersectionObserver(([entry])=>{
-      const onHome = document.querySelector('.page.is-active')?.dataset.page === 'home';
-      if(entry.isIntersecting && onHome){ heroVid.play().catch(()=>{}); }
-      else { heroVid.pause(); }
-    }, {threshold:0.05}).observe(heroVid);
-    heroVid.addEventListener('error', ()=>heroVid.classList.add('is-hidden'), {once:true});
-  }
 
   /* FAQ accordion */
   document.querySelectorAll('.faq__item').forEach(item=>{
